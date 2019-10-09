@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<%= form_with model: @item, url: add_to_bin_path, method: :post do |f| %>
+  <div>
+    <%= f.label :name  %>
+    <%= @item.name %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= @item.price %>
+  </div>
+
+  <div>
+    <%= f.label :amount %>
+    <%= @item.amount%>
+  </div>
+
+  <div>
+    <% if @item.amount > 0 %>
+      <%= hidden_field_tag(:item_id, @item.id) %>
+      <%= f.label "How much?" %>
+      <%= f.select(:amount, options_for_select(1..@item.amount))%>
+      <%= f.submit value="Add to bin"%>
+    <% else %>
+      <%= f.label "There is none in the stock" %>
+    <% end %>
+  </div>
+<% end %>
+  <%= link_to 'Back', items_path %>
+</body>
+</html>

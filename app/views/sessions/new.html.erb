@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<h1>Login</h1>
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<%= form_with  url: sessions_path do |form| %>
+  <div class=”field”>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+  <div class=”field”>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+  <div class=”actions”>
+    <%= form.submit%>
+  </div>
+<% end %>
+</html>

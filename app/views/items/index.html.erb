@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Price</td>
+      <td>Amount</td>
+    </tr>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.price %></td>
+        <td><%= item.amount %></td>
+        <td><%= link_to 'Show', item_path(item)  %></td>
+        <td><%= link_to 'Delete', item_path(item),
+                                  method: :delete,
+                                  data: {confirm: 'U sure?'} %></td>
+        <td><%= link_to 'Edit', edit_item_path(item)%></td>
+      </tr>
+    <% end %>
+  </table>
+<%= link_to 'New item', new_item_path %>
+</body>
+</html>
